@@ -15,12 +15,20 @@ df_3.columns = ['paint_color', 'count']
 
 st.header("Vehicle Sales Analysis")
 
+# Average Cost of Vehicle per Vehicle Type
 fig = px.histogram(df_1, x="type", y = 'price', color = 'price', title="Average Price per Type of Vehicle")
 fig.update_xaxes(title_text="Car Type")
 fig.update_yaxes(title_text="Average Price")
 st.plotly_chart(fig)
 
-fig = px.scatter(df_3, x='paint_color', y='count', title='Scatter Plot of Paint Colors vs. Car Count', size='count', color='paint_color')
+# Average Miles per Car Condition
+fig = px.histogram(df_2, x="manufacturer", y = 'odometer', color = 'condition', title="Average Miles vs Car Condition for each Manufacturer")
+fig.update_xaxes(title_text="Car Manufacturer")
+fig.update_yaxes(title_text="Average Miles")
+
+# Popular Car Colors
+fig = px.scatter(df_3, x='paint_color', y='count', title= 'Most Popular Car Colors', size='count', color='paint_color')
+fig.update_layout(xaxis_title='Paint Color', yaxis_title='Count of Cars')
 st.plotly_chart(fig)
    
 if st.checkbox("Show data"):

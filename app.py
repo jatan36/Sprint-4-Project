@@ -25,6 +25,7 @@ st.plotly_chart(fig)
 fig = px.histogram(df_2, x="manufacturer", y = 'odometer', color = 'condition', title="Average Miles vs Car Condition for each Manufacturer")
 fig.update_xaxes(title_text="Car Manufacturer")
 fig.update_yaxes(title_text="Average Miles")
+st.plotly_chart(fig)
 
 # Popular Car Colors
 fig = px.scatter(df_3, x='paint_color', y='count', title= 'Most Popular Car Colors', size='count', color='paint_color')

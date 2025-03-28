@@ -39,14 +39,5 @@ st.plotly_chart(fig)
 st.header("Project 4: Vehicle Sales Analysis")
 
 # Checkbox
-if st.checkbox("Log Scale"):
-    fig = px.histogram(df_1, x="type", y = 'price', color = 'price', title="Average Price per Type of Vehicle")
-    fig.update_xaxes(title_text="Car Type")
-    fig.update_yaxes(title_text="Average Price")
-    fig.update_yaxes(type="log")
-    st.plotly_chart(fig)
-else:
-    fig = px.histogram(df_1, x="type", y = 'price', color = 'price', title="Average Price per Type of Vehicle")
-    fig.update_xaxes(title_text="Car Type")
-    fig.update_yaxes(title_text="Average Price")
-    st.plotly_chart(fig)
+if st.checkbox("Show Dataset"):
+    print(df)

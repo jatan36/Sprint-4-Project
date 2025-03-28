@@ -5,6 +5,9 @@ import plotly.express as px
 df = pd.read_csv("vehicles_us.csv")
 df['manufacturer'] = df['model'].str.split(' ', n=1).str[0].str.upper()
 
+# Header of the Project
+st.header("Project 4: Vehicle Sales Analysis")
+
 # GRAPH 1 - VEHICLE TYPE VS AVERAGE PRICE
 df_1 = df.groupby(['type'])['price'].mean().reset_index()
 df_1 = df_1.sort_values(by='price')
@@ -35,9 +38,19 @@ fig.update_xaxes(title_text="Paint Color")
 fig.update_yaxes(title_text="Average Price of Car")
 st.plotly_chart(fig)
 
-# Header of the Project
-st.header("Project 4: Vehicle Sales Analysis")
-
 # Checkbox
 if st.checkbox("Show Dataset"):
-    print(df)
+    fig1 = px.histogram(df, x="price", nbins = 100, title = "Distribution of Car Prices")
+    fig1.update_xaxes(title_text="Car Price in USD")
+    fig1.update_yaxes(title_text="Number of Cars")
+    st.plotly_chart(fig1)
+    
+    fig2 = px.histogram(df, x="odometer", nbins = 100, title = "Distribution of Cars by Mileage")
+    fig2.update_xaxes(title_text="Odometer in Miles", tickformat=",",tickprefix="")
+    fig2.update_yaxes(title_text="Number of Cars")
+    st.plotly_chart(fig2)
+    
+    fig3 = px.histogram(df, x="condition", title="Distribution of Cars by Condition")
+    fig3.update_xaxes(title_text="Condition of Car")
+    fig3.update_yaxes(title_text="Number of Cars")
+    st.plotly_chart(fig3)
